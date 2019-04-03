@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+    <resultMap id="BaseResultMap" type="com.jk.model.Tree">
+        <id column="id" property="id" />
+        <result column="text" property="text"/>
+        <result column="url" property="url"/>
+        <result column="pid" property="pid"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,text,url,pid
+    </sql>
+    <select id="queryTree" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM fun_tree
+        WHERE pid = #{pid}
+    </select>
+</mapper>
